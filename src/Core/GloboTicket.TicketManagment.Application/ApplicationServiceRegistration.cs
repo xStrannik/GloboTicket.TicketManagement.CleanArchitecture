@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application
+namespace GloboTicket.TicketManagement.Application
 {
     public static class ApplicationServiceRegistration
     {

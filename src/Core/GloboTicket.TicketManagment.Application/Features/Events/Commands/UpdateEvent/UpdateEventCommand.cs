@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Features.Events.Commands.UpdateEvent
+namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent
 {
     public class UpdateEventCommand : IRequest
     {

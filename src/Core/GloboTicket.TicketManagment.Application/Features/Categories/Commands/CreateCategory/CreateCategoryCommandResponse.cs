@@ -1,11 +1,11 @@
-﻿using GloboTicket.TicketManagment.Application.Responses;
+﻿using GloboTicket.TicketManagement.Application.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Features.Categories.Commands.CreateCategory
+namespace GloboTicket.TicketManagement.Application.Features.Categories.Commands.CreateCategory
 {
     public class CreateCategoryCommandResponse : BaseResponse
     {

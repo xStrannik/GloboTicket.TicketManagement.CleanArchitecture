@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GloboTicket.TicketManagment.Application.Contracts.Persistence;
+using GloboTicket.TicketManagement.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Features.Categories.Queries.GetCategoriesListWithEvents
+namespace GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents
 {
     public class GetCategoriesListWithEventsQueryHandler : IRequestHandler<GetCategoriesListWithEventsQuery, List<CategoryEventListVm>>
     {

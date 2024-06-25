@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
-using GloboTicket.TicketManagment.Application.Features.Categories.Queries.GetCategoriesList;
-using GloboTicket.TicketManagment.Application.Features.Categories.Queries.GetCategoriesListWithEvents;
-using GloboTicket.TicketManagment.Application.Features.Events.Commands.CreateEvent;
-using GloboTicket.TicketManagment.Application.Features.Events.Commands.DeleteEvent;
-using GloboTicket.TicketManagment.Application.Features.Events.Commands.UpdateEvent;
-using GloboTicket.TicketManagment.Application.Features.Events.Queries.GetEventDetail;
-using GloboTicket.TicketManagment.Application.Features.Events.Queries.GetEventsList;
-using GloboTicket.TicketManagment.Domain.Entities;
+using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList;
+using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.DeleteEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
+using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventsList;
+using GloboTicket.TicketManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Profiles
+namespace GloboTicket.TicketManagement.Application.Profiles
 {
     public class MappingProfile : Profile
     {

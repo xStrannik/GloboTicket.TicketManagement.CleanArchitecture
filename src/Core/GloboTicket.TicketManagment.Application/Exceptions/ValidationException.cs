@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Exceptions
+namespace GloboTicket.TicketManagement.Application.Exceptions
 {
     public class ValidationException : Exception
     {

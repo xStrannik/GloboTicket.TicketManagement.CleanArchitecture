@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Responses
+namespace GloboTicket.TicketManagement.Application.Responses
 {
     public class BaseResponse
     {

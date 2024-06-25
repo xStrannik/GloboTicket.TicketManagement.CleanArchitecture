@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Domain.Entities
+namespace GloboTicket.TicketManagement.Domain.Entities
 {
     public class Order
     {

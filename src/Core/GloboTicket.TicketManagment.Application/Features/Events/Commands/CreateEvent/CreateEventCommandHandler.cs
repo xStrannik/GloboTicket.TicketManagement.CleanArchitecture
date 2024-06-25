@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
-using GloboTicket.TicketManagment.Application.Contracts.Persistence;
-using GloboTicket.TicketManagment.Domain.Entities;
+using GloboTicket.TicketManagement.Application.Contracts.Infrastructure;
+using GloboTicket.TicketManagement.Application.Contracts.Persistence;
+using GloboTicket.TicketManagement.Application.Models.Mail;
+using GloboTicket.TicketManagement.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,17 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Features.Events.Commands.CreateEvent
+namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent
 {
     public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Guid>
     {
         private readonly IEventRepository _eventRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
 
-        public CreateEventCommandHandler(IMapper mapper, IEventRepository eventRepository)
+        public CreateEventCommandHandler(IMapper mapper, IEventRepository eventRepository, IEmailService emailService)
         {
             _mapper = mapper;
             _eventRepository = eventRepository;
+            _emailService = emailService;
         }
 
         public async Task<Guid> Handle(CreateEventCommand request, CancellationToken cancellationToken)
@@ -34,6 +38,17 @@ namespace GloboTicket.TicketManagment.Application.Features.Events.Commands.Creat
             }
 
             @event = await _eventRepository.AddAsync(@event);
+
+            //Sending email notification to admis address
+            var email = new Email() { To = "ruslant994+1@gmal.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
+
+            try
+            {
+                await _emailService.SendEmail(email);
+            }
+            catch (Exception ex) 
+            { 
+            }
 
             return @event.EventId;
         }

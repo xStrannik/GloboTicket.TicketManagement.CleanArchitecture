@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Domain.Common
+namespace GloboTicket.TicketManagement.Domain.Common
 {
     public class AuditableEntity
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GloboTicket.TicketManagment.Application.Contracts.Persistence;
-using GloboTicket.TicketManagment.Domain.Entities;
+using GloboTicket.TicketManagement.Application.Contracts.Persistence;
+using GloboTicket.TicketManagement.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagment.Application.Features.Events.Commands.UpdateEvent
+namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent
 {
     public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand>
     {
