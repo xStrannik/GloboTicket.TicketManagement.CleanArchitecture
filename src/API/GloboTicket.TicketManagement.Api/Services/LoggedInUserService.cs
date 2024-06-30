@@ -7,9 +7,9 @@ namespace GloboTicket.TicketManagement.Api.Services
     {
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public LoggedInUserService(IHttpContextAccessor contextAccessor)
+        public LoggedInUserService(IHttpContextAccessor httpContextAccessor)
         {
-            _contextAccessor = contextAccessor;
+            _contextAccessor = httpContextAccessor;
         }
 
         public string UserId

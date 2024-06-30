@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagement.Persistence.Configurations.Repositories
+namespace GloboTicket.TicketManagement.Persistence.Repositories
 {
     public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
