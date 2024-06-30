@@ -19,9 +19,9 @@ namespace GloboTicket.TicketManagement.App.Auth
             _httpClient = httpClientFactory.CreateClient("Authentication");
         }
 
-        private readonly JsonSerializerOptions jsonSerializeOptions = new()
+        private readonly JsonSerializerOptions jsonSerializerOptions = new()
         {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         };
 
         public async Task<ApiResponse> Login(string email, string password)
@@ -42,14 +42,14 @@ namespace GloboTicket.TicketManagement.App.Auth
                     return new ApiResponse { Success = true };
                 }
             }
-            catch
+            catch (Exception ex) 
             {
             }
 
             return new ApiResponse
             {
                 Success = false,
-                ValidationErrors = "Invalid email and/or password"
+                ValidationErrors = "Invalid email and/or password."
             };
         }
 
@@ -113,19 +113,19 @@ namespace GloboTicket.TicketManagement.App.Auth
                 userResponse.EnsureSuccessStatusCode();
 
                 var userJson = await userResponse.Content.ReadAsStringAsync();
-                var userInfo = JsonSerializer.Deserialize<UserInfo>(userJson, jsonSerializeOptions);
+                var userInfo = JsonSerializer.Deserialize<UserInfo>(userJson, jsonSerializerOptions);
 
                 if (userInfo != null)
                 {
                     var claims = new List<Claim>
                     {
-                         new (ClaimTypes.Name, userInfo.Email),
-                         new (ClaimTypes.Email, userInfo.Email)
+                        new(ClaimTypes.Name, userInfo.Email),
+                        new(ClaimTypes.Email, userInfo.Email)
                     };
 
                     claims.AddRange(
                         userInfo.Claims.Where(c => c.Key != ClaimTypes.Name && c.Key != ClaimTypes.Email)
-                        .Select(c => new Claim(c.Key, c.Value)));
+                            .Select(c => new Claim(c.Key, c.Value)));
 
                     var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
                     user = new ClaimsPrincipal(id);
