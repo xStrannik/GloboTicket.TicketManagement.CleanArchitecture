@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+var apiBaseUrl = builder.Configuration["ApiBaseUrl"]
+    ?? "https://localhost:7088";
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -22,12 +24,12 @@ builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStat
 
 builder.Services.AddTransient<CookieAuthenticationStateProvider>();
 
-builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://localhost:7088/"))
+builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri(apiBaseUrl))
     .AddHttpMessageHandler<CookieHandler>();
 
 builder.Services.AddHttpClient(
     "Authentication",
-    client => client.BaseAddress = new Uri("https://localhost:7088"))
+    client => client.BaseAddress = new Uri(apiBaseUrl))
     .AddHttpMessageHandler<CookieHandler>();
 
 builder.Services.AddScoped<IEventDataService, EventDataService>();
