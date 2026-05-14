@@ -2,6 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GloboTickeApi
+name: Build and deploy API app to Azure Web App - GloboTickeApi
 
 on:
   push:
@@ -25,15 +26,20 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+      - name: Restore API project
+        run: dotnet restore src/API/GloboTicket.TicketManagement.Api/GloboTicket.TicketManagement.Api.csproj
 
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+      - name: Publish API project
+        run: dotnet publish src/API/GloboTicket.TicketManagement.Api/GloboTicket.TicketManagement.Api.csproj -c Release
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+          path: src/API/GloboTicket.TicketManagement.Api/bin/Release/net8.0/publish
 
   deploy:
     runs-on: windows-latest
